@@ -9,7 +9,8 @@ import { AppNavBar } from "./common/AppNavBar";
 function App() {
   return (
     <Router>
-      <AppNavBar></AppNavBar>
+      <AppNavBar />
+
       <Switch>
         <Route path="/registration">
           <Registration />
