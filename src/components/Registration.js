@@ -7,33 +7,36 @@ export function Registration() {
   const state = useSelector((state) => state);
   console.log(state);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
+  const [role, setRole] = useState("");
 
   const [successOperation, setSuccessOperation] = useState(false);
   const [errorOperation, setErrorOperation] = useState(false);
 
-  const updateFirstName = (e) => setFirstName(e.target.value);
-  const updateLastName = (e) => setLastName(e.target.value);
+  const updateFirstname = (e) => setFirstname(e.target.value);
+  const updateLastname = (e) => setLastname(e.target.value);
   const updatePassword = (e) => setPassword(e.target.value);
   const updateEmail = (e) => setEmail(e.target.value);
   const updateMobile = (e) => setMobile(e.target.value);
+  const updateRole = (e) => setRole(e.target.value);
 
   const registration = (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, password, email, mobile);
+    console.log(firstname, lastname, password, email, mobile, role);
 
     // THIS IS REDUX ACTION CALLING
     dispatch(
       createUserAction({
-        firstName,
-        lastName,
+        firstname,
+        lastname,
         email,
         password,
         mobile,
+        role,
       })
     );
 
@@ -42,11 +45,12 @@ export function Registration() {
     setTimeout(() => setSuccessOperation(false), 5000);
 
     // reset the form
-    setFirstName("");
-    setLastName("");
+    setFirstname("");
+    setLastname("");
     setPassword("");
     setEmail("");
     setMobile("");
+    setRole("");
   };
 
   return (
@@ -63,8 +67,8 @@ export function Registration() {
         <div className="mb-1">
           <input
             type="text"
-            value={firstName}
-            onChange={(e) => updateFirstName(e)}
+            value={firstname}
+            onChange={(e) => updateFirstname(e)}
             className="form-control"
             placeholder="Enter First name"
           />
@@ -73,8 +77,8 @@ export function Registration() {
         <div className="mb-1">
           <input
             type="text"
-            value={lastName}
-            onChange={(e) => updateLastName(e)}
+            value={lastname}
+            onChange={(e) => updateLastname(e)}
             className="form-control"
             placeholder="Enter Lastname"
           />
@@ -107,6 +111,16 @@ export function Registration() {
             onChange={(e) => updateMobile(e)}
             className="form-control"
             placeholder="Enter Mobile"
+          />
+        </div>
+
+        <div className="mb-1">
+          <input
+            type="text"
+            value={role}
+            onChange={(e) => updateRole(e)}
+            className="form-control"
+            placeholder="Enter Role"
           />
         </div>
 
