@@ -20,7 +20,7 @@ export function createUserAction(payload) {
     });
 
     // UPDATE THE UI
-    // dispatch({ type: USER_CREATE, payload: payload });
+    dispatch({ type: USER_CREATE, payload: payload });
   };
 }
 
